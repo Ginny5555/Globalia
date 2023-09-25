@@ -119,6 +119,7 @@ $purple-bg: #F5F4FF;
 }
 .settings {
   margin-top:49px;
+  margin: 49px 20px 0 20px;
   & label {
     position: absolute;
     color: #a3a1ff;
