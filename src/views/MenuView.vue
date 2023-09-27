@@ -170,36 +170,21 @@
     </div>
   </div>
 </template>
-<script>
+<script setup>
 import CustomButton from "@/components/ui/CustomButton.vue";
-export default {
-  components: {
-    CustomButton,
-  },
-  name: "MenuView",
-  props: {},
-};
+
+
+
 </script>
 <style lang="scss" >
-$white: #fff;
-$purple-text: #a3a1ff;
-$dark-text: #15133d;
-$purple: #5644fc;
-$light-purpl: #f5f4ff;
-@mixin center-align {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-@mixin flex-column {
-  display: flex;
-  flex-direction: column;
-}
+@import '../assets/style/style.scss';
+
 .menu {
   width: 276px;
   background-color: $white;
   padding: 45px 0 62px 36px;
   @include flex-column;
+      border-radius: 40px 0 0 40px;
   &-logo {
     margin-bottom: 101px;
     & img {
@@ -269,7 +254,7 @@ $light-purpl: #f5f4ff;
     color: $purple-text;
     text-align: center;
     font-size: 12px;
-
+position:relative;
     font-weight: 400;
     & span {
       color: $dark-text;
@@ -289,7 +274,7 @@ $light-purpl: #f5f4ff;
       background-color: $purple;
       @include center-align;
       position: absolute;
-     margin-bottom: 8%;
+     top: -23%;
     }
   }
 }

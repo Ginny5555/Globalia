@@ -1,15 +1,11 @@
 <template>
   <div class="custominput">
-
-     <label :for="inputId">{{ label }}</label>
-      <textarea type="text" :id="id"   :placeholder="placeholder" />
-
-
-
+    <label :for="inputId">{{ label }}</label>
+    <textarea type="text" :id="id" :placeholder="placeholder" />
   </div>
 </template>
 
-<script>
+<script >
 import { defineComponent } from 'vue';
 
 export default defineComponent({
@@ -22,14 +18,14 @@ export default defineComponent({
   },
 
 });
+
+
 </script>
 <style lang="scss" scoped>
-$dark-text: #15133d;
-$purple-text: #a3a1ff;
+@import "../../assets/style/style.scss";
 textarea {
   border-radius: 10px;
-border: 2px solid $purple-text;
-display:flex;
+  border: 2px solid $purple-text;
+  display: flex;
 }
-
 </style>

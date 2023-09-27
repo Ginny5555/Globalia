@@ -1,7 +1,7 @@
 <template>
   <div class="custominput">
     <label :for="inputId">{{ label }}</label>
-    <input type="text" :id="id" :placeholder="placeholder" />
+    <input type="text"  :id="id" :placeholder="placeholder" />
   </div>
 </template>
 
@@ -19,12 +19,22 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-$dark-text: #15133d;
-$purple-text: #a3a1ff;
+@import '../../assets/style/style.scss';
 input {
   border-radius: 10px;
   border: 2px solid $purple-text;
   display: flex;
   box-sizing:border-box;
+
 }
+label {
+    position: absolute;
+    color: #a3a1ff;
+    padding: 9px 16px;
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 2.6px;
+  }
 </style>

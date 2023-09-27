@@ -28,9 +28,9 @@
       </div>
       <div class="profile-preview__info">
         <div class="profile-preview__info-picture">
-          <div class="info-picture">
-            <img src="../assets/julia.png" alt="" />
-          </div>
+
+            <img class="info-picture" src="../assets/julia.png" alt="" />
+
           <a href="#" class="info-settings circle">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -117,10 +117,10 @@
         <div class="num">1.37K</div>
       </div>
     </div>
-    <div class="profile-latest">
-      <div class="profile-latest__title">
-        <h3>Latest Alerts</h3>
-        <svg
+ <div class="profile-latest">
+    <div class="profile-latest__title">
+      <h3>Latest Alerts</h3>
+          <svg
           xmlns="http://www.w3.org/2000/svg"
           width="22"
           height="22"
@@ -161,80 +161,57 @@
           />
           <circle cx="17" cy="6" r="3" fill="#FF5353" />
         </svg>
-      </div>
-      <div class="profile-latest__alerts">
-        <div class="block-alert">
-          <div class="block-alert__picture">
-            <img src="../assets/alerts.png" alt="" />
-          </div>
-          <div class="block-alert__title">
-            <div class="block-alert__title-head">Upcoming Elections...</div>
-            <div class="block-alert__title-date">
-              3 October, 2023 - 07:26 AM
-            </div>
-          </div>
+    </div>
+    <div class="profile-latest__alerts">
+      <div class="block-alert purple-block" v-for="(alert, index) in alerts" :key="index">
+        <div class="block-alert__picture">
+          <img :src="alert.picture" alt="" />
         </div>
-         <div class="block-alert">
-          <div class="block-alert__picture">
-            <img src="../assets/alerts.png" alt="" />
-          </div>
-          <div class="block-alert__title">
-            <div class="block-alert__title-head">Upcoming Elections...</div>
-            <div class="block-alert__title-date">
-              3 October, 2023 - 07:26 AM
-            </div>
-          </div>
+        <div class="block-alert__title">
+          <div class="block-alert__title-head">{{ alert.title }}</div>
+          <div class="block-alert__title-date">{{ alert.date }}</div>
         </div>
-         <div class="block-alert">
-          <div class="block-alert__picture">
-            <img src="../assets/alerts.png" alt="" />
-          </div>
-          <div class="block-alert__title">
-            <div class="block-alert__title-head">Upcoming Elections...</div>
-            <div class="block-alert__title-date">
-              3 October, 2023 - 07:26 AM
-            </div>
-          </div>
-        </div>
-         <div class="block-alert">
-          <div class="block-alert__picture">
-            <img src="../assets/alerts.png" alt="" />
-          </div>
-          <div class="block-alert__title">
-            <div class="block-alert__title-head">Upcoming Elections...</div>
-            <div class="block-alert__title-date">
-              3 October, 2023 - 07:26 AM
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="profile-latest__button">
-        <button>64 MORE ALERTS</button>
       </div>
     </div>
+    <div class="profile-latest__button">
+      <button>{{ remainingAlerts }} MORE ALERTS</button>
+    </div>
+  </div>
   </div>
 </template>
-<script>
-export default {
-  name: "ProfileView",
-  props: {},
-};
+
+<script setup>
+import { ref, computed } from 'vue';
+
+const alerts = ref([
+  {
+    title: 'Upcoming Elections...',
+    date: '3 October, 2023 - 07:26 AM',
+    picture:   require("@/assets/alerts.png"),
+  },
+  {
+    title: 'Upcoming Elections...',
+    date: '3 October, 2023 - 07:26 AM',
+    picture:   require("@/assets/alerts.png"),
+  },
+  {
+    title: 'Upcoming Elections...',
+    date: '3 October, 2023 - 07:26 AM',
+    picture:   require("@/assets/alerts.png"),
+  },
+  // Add more alert objects here
+]);
+
+const maxAlertsToShow = 4;
+
+const remainingAlerts = computed(() => {
+  return alerts.value.length - maxAlertsToShow;
+});
 </script>
+
+
 <style lang="scss" >
-$white: #fff;
-$purple-text: #a3a1ff;
-$dark-text: #15133d;
-$purple: #5644fc;
-$light-purpl: #f5f4ff;
-@mixin center-align {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-@mixin flex-column {
-  display: flex;
-  flex-direction: column;
-}
+@import '../assets/style/style.scss';
 h3 {
   color: $dark-text;
   font-size: 14px;
@@ -247,18 +224,11 @@ h3 {
   color: $purple;
   margin-right: 12px;
 }
-.circle {
-  background-color: $purple;
-  border-radius: 50%;
-}
+
 .svg-block {
   display: flex;
 }
-.purple-block {
-  background-color: $light-purpl;
-  border-radius: 10px;
-   box-sizing: border-box;
-}
+
 .block-alert {
   display: flex;
   align-items: center;
@@ -318,6 +288,7 @@ h3 {
       &-picture {
         @include center-align;
         flex-direction: column;
+        position:relative;
       }
       &-name {
         @include center-align;
@@ -395,11 +366,7 @@ letter-spacing: 1.82px;
     border-radius: 50%;
     overflow: hidden;
     position: relative;
-    & img {
-      width: 100%; /* Make the image fill the circle */
-      height: auto; /* Maintain the image's aspect ratio */
-      object-fit: cover; /* Cover the entire circle with the image */
-    }
+
   }
   &-settings {
     width: 33px;
@@ -407,8 +374,8 @@ letter-spacing: 1.82px;
 
     @include center-align;
     position: absolute;
-    margin-top: 6%;
-    margin-left: 4%;
+    top: 76%;
+    left: 53%;
     &:hover {
       opacity: 0.5;
     }

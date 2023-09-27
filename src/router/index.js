@@ -1,13 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router';
-
-import DashboardView from '../components/Dashboard.vue';
-import SettingsView from '../components/Settings.vue';
+import RegistrationView from '../views/RegistrationView.vue';
+import DashboardView from '../components/DashboardView.vue';
+import SettingsView from '../components/SettingsView.vue';
 import AllAlerts from '../components/Alerts.vue';
 
 const routes = [
   { path: '/', component: DashboardView },
   { path: '/alerts', component: AllAlerts },
   { path: '/settings', component: SettingsView },
+  { path: '/registration', component: RegistrationView },
 ];
 
 const router = createRouter({

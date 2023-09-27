@@ -156,34 +156,16 @@
           </svg>
         </div>
         <div class="wigets-activity__colegues">
-          <div class="colegues purple-block">
+          <div class="colegues purple-block" v-for="(colegue, index) in colegues" :key="index">
             <div class="colegues-block">
               <div class="colegues-image">
-                <img src="../assets/amanda.png" alt="" />
+                <img :src="colegue.picture" alt="" />
               </div>
-              <div class="title">Amanda Lock</div>
+              <div class="title">{{colegue.title}}</div>
             </div>
-            <div class="colegues-date date">October 2, 2023 - 10:42 PM</div>
+            <div class="colegues-date date">{{colegue.date}}</div>
           </div>
-          <div class="colegues purple-block">
-            <div class="colegues-block">
-              <div class="colegues-image">
-                <img src="../assets/amanda.png" alt="" />
-              </div>
-              <div class="title">Amanda Lock</div>
-            </div>
-            <div class="colegues-date date">October 2, 2023 - 10:42 PM</div>
-          </div>
-          <div class="colegues purple-block">
-            <div class="colegues-block">
-              <div class="colegues-image">
-                <img src="../assets/amanda.png" alt="" />
-                <img src="../assets/anna.png" alt="" />
-              </div>
-              <div class="title">Amanda Lock</div>
-            </div>
-            <div class="colegues-date date">October 2, 2023 - 10:42 PM</div>
-          </div>
+
         </div>
       </div>
 
@@ -222,7 +204,13 @@
     </div>
     <div class="review">
       <div class="review-slider">
-        <CustomSlider class="image-slider" :images="images" :texts="textBlocks">
+        <CustomSlider
+          :src="src"
+          :class="image - anna"
+          class="image-slider"
+          :images="images"
+          :texts="textBlocks"
+        >
           <template v-slot:image="{ src }">
             <img :src="src" alt="Slider Image" />
           </template>
@@ -248,101 +236,83 @@
             />
           </svg>
         </div>
-        <div class="review-latest__purple ">
-          <div class="review-latest__purple-block purple-block">
+        <div class="review-latest__purple">
+          <div class="review-latest__purple-block purple-block" v-for="(review, index) in reviews" :key="index">
             <div class="circle-title">
-            <div class="circle">7.2</div>
-            <h3 class="title">Calipso Sensations</h3>
+              <div class="circle">{{review.number}}</div>
+              <h3 class="title">{{review.title}}</h3>
             </div>
             <CustomButton>
               <template #text>full review</template>
             </CustomButton>
           </div>
-           <div class="review-latest__purple-block purple-block">
-            <div class="circle-title">
-            <div class="circle">9.1</div>
-            <h3 class="title">V Tech Mattee</h3>
-            </div>
-            <CustomButton>
-              <template #text>full review</template>
-            </CustomButton>
-          </div>
-           <div class="review-latest__purple-block purple-block">
-            <div class="circle-title">
-            <div class="circle">7.9</div>
-            <h3 class="title">Emerald V6</h3>
-            </div>
-            <CustomButton>
-              <template #text>full review</template>
-            </CustomButton>
-          </div>
+        
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-import { defineComponent, ref } from "vue";
+<script setup>
+import { ref } from "vue";
 import SearchLine from "@/components/ui/SearchLine.vue";
 import CustomTextarea from "@/components/ui/CustomTextarea.vue";
 import CustomButton from "@/components/ui/CustomButton.vue";
 import CustomSlider from "@/components/ui/CustomSlider.vue";
-export default defineComponent({
-  name: "DashboardView",
-  components: {
-    SearchLine,
-    CustomButton,
-    CustomTextarea,
-    CustomSlider,
+
+const inputValue = ref("");
+const images = [
+  require("@/assets/anna.png"), // Use @ to refer to the src directory
+  require("@/assets/anna.png"),
+  require("@/assets/anna.png"),
+  // Добавьте пути к вашим изображениям здесь
+];
+const reviews = ref([
+  {
+    title: 'Calipso Sensations',
+    number: '7.2',
+
   },
-  props: {
-    msg: String,
+  {
+    title: 'V Tech Mattee',
+    number: '9.1',
   },
-  setup() {
-    const inputValue = ref("");
-    const images = [
-      require("@/assets/anna.png"), // Use @ to refer to the src directory
-      require("@/assets/anna.png"),
-      require("@/assets/anna.png"),
-      // Добавьте пути к вашим изображениям здесь
-    ];
-
-    const textBlocks = [
-      "Humanity’s fashion reached its zenith during the Vectorian era; unfortunately, it was during this very time that its decline began. Now, it has finally hit rock bottom...",
-
-      "Title for Image 2",
-
-      "Title for Image 3",
-    ];
-
-    return {
-      inputValue,
-      images,
-      textBlocks,
-    };
+  {
+    title: 'Emerald V6',
+    number: '7.9',
   },
-});
+  // Add more alert objects here
+]);
+const colegues = ref([
+  {
+    title: 'Amanda Lock',
+    date: 'October 2, 2023 - 10:42 PM',
+    picture:   require("@/assets/amanda.png"),
+  },
+  {
+    title: 'Selina Fye',
+    date: 'October 2, 2023 - 09:16 PM',
+    picture:   require("@/assets/selina.png"),
+  },
+  {
+    title: 'Rin Vulcan',
+    date: 'October 2, 2023 - 05:23 PM',
+    picture:   require("@/assets/rin.png"),
+  },
+  // Add more alert objects here
+]);
+const textBlocks = [
+  "Humanity’s fashion reached its zenith during the Vectorian era; unfortunately, it was during this very time that its decline began. Now, it has finally hit rock bottom...",
+
+  "Title for Image 2",
+
+  "Title for Image 3",
+];
+
 </script>
 
 <style  lang="scss">
-$purple: #5644fc;
-$white: #fff;
-$purple-text: #a3a1ff;
-$dark-text: #15133d;
-@mixin center-align {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-@mixin flex-column {
-  display: flex;
-  flex-direction: column;
-}
-@mixin flex-between {
-  display: flex;
-  justify-content: space-between;
-}
+@import "../assets/style/style.scss";
 .dashboard {
   margin: 49px 20px;
 }
@@ -358,12 +328,7 @@ $dark-text: #15133d;
 
   font-weight: 700;
 }
-.white-box {
-  border-radius: 20px;
-  background: $white;
-  box-shadow: 0px 4px 4px 0px rgba(163, 161, 255, 0.16);
-      box-sizing: border-box;
-}
+
 .welcome {
   @include flex-between;
   width: 848px;
@@ -466,41 +431,40 @@ $dark-text: #15133d;
 }
 .review {
   @include flex-between;
-  margin-top:32px;
+  margin-top: 32px;
   &-latest {
     width: 414px;
     height: 243px;
     padding: 16px 14px;
 
     box-sizing: border-box;
-   &__purple {
-    box-sizing: border-box;
-    @include flex-column;
-    gap:9px;
-    &-block {
-      width: 374px;
-       box-sizing: border-box;
-height: 47px;
-      @include flex-between;
-      align-items: center;
-      padding: 5px 9px;
-      & .circle {
-        width: 37px;
-height: 37px;
-color: $white;
+    &__purple {
+      box-sizing: border-box;
+      @include flex-column;
+      gap: 9px;
+      &-block {
+        width: 374px;
+        box-sizing: border-box;
+        height: 47px;
+        @include flex-between;
+        align-items: center;
+        padding: 5px 9px;
+        & .circle {
+          width: 37px;
+          height: 37px;
+          color: $white;
 
-font-size: 14px;
+          font-size: 14px;
 
-font-weight: 700;
-@include center-align;
-
-      }
-      & button {
-        width: 123px;
-height: 25px;
+          font-weight: 700;
+          @include center-align;
+        }
+        & button {
+          width: 123px;
+          height: 25px;
+        }
       }
     }
-   }
     &__title {
       @include flex-between;
       padding: 11px 10px;
@@ -571,11 +535,15 @@ textarea {
   height: 243px;
   overflow: hidden;
   border-radius: 20px;
+  position: relative;
 }
+// .image-anna {
+//   background-image: url('../assets/anna.png');
+// }
 .circle {
-  margin-right:20px;
+  margin-right: 20px;
   &-title {
-  @include center-align;
-}
+    @include center-align;
+  }
 }
 </style>

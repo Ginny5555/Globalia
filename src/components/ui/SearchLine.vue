@@ -47,18 +47,14 @@
     </div>
   </div>
 </template>
-<script>
-import { defineComponent } from "vue";
+<script setup>
+
 import CustomButton from "@/components/ui/CustomButton.vue";
-export default defineComponent({
-  name: "SearchLine",
-  components: {
-    CustomButton,
-  },
-});
+
+
 </script>
 <style lang="scss" scoped>
-$dark-text: #15133d;
+@import '../../assets/style/style.scss';
 
 .input-container {
   position: relative;

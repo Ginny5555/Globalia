@@ -29,8 +29,7 @@ export default defineComponent({
 });
 </script>
 <style lang="scss">
-$white :#FFF;
-$purple : #5644FC;
+@import '../../assets/style/style.scss';
 button {
   border-radius: 40px;
 background-color: $purple;
