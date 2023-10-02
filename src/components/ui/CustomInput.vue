@@ -1,22 +1,22 @@
 <template>
   <div class="custominput">
     <label :for="inputId">{{ label }}</label>
-    <input type="text"  :id="id" :placeholder="placeholder" />
+    <input @input="updateValue" type="text"  :id="id" :placeholder="placeholder" />
   </div>
 </template>
 
-<script>
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  name: "CustomInput",
-  props: {
+<script setup>
+import { defineProps } from "vue";
+defineProps({
     value: String, // For v-model binding
     placeholder: String,
     label: String,
     id: String,
-  },
 });
+
+const updateValue= ()=>{
+  // emit('click');
+}
 </script>
 <style lang="scss" scoped>
 @import '../../assets/style/style.scss';

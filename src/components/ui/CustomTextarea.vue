@@ -5,18 +5,14 @@
   </div>
 </template>
 
-<script >
-import { defineComponent } from 'vue';
+<script setup>
+import { defineProps } from "vue";
 
-export default defineComponent({
-   name: "CustomTextarea",
-  props: {
+defineProps({
     value: String, // For v-model binding
     placeholder: String,
     label:String,
     id:String,
-  },
-
 });
 
 

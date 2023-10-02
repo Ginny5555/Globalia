@@ -3,7 +3,7 @@
    ref="nextButton"
     type="button"
     class="next mx-auto"
-    @click="onButtonClick">
+>
   <slot name="text" />
 
     <slot  name="image" />
@@ -11,22 +11,8 @@
 
  </button>
 </template>
-<script>
-import { defineComponent} from 'vue';
+<script setup>
 
-export default defineComponent({
-  name: 'CustomButton',
-  emits: ['click'],
-  setup(props, { emit }) {
-    const onButtonClick = () => {
-      emit('click');
-    };
-
-    return {
-      onButtonClick
-    };
-  }
-});
 </script>
 <style lang="scss">
 @import '../../assets/style/style.scss';
