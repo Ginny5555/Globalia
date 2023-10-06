@@ -5,7 +5,7 @@
         <SearchLine></SearchLine>
       </div>
       <div class="settings-blocks">
-        <SettingsDrop/>
+        <SettingsDrop />
 <SettingsFields/>
 
       </div>

@@ -31,7 +31,7 @@
 
             <img class="info-picture" src="../assets/julia.png" alt="" />
 
-          <a href="#" class="info-settings circle">
+          <router-link to="/settingsprofile" class="info-settings circle">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="19"
@@ -50,7 +50,7 @@
                 stroke-width="1.5"
               />
             </svg>
-          </a>
+          </router-link>
         </div>
         <div class="profile-preview__info-name">
           <h3>Julia Grey</h3>

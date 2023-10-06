@@ -1,5 +1,6 @@
 <template>
   <div class="settings-blocks__drop white-box drag">
+<h3>{{title}}</h3>
           <div class="drag-drop">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +30,11 @@
         </div>
 </template>
 <script setup>
+import { defineProps } from "vue";
+defineProps({
+    title: String,
 
+});
 
 </script>
 <style lang="scss" scoped>

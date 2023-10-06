@@ -40,7 +40,7 @@ import SearchLine from "@/components/ui/SearchLine.vue";
 import MainLayout from "@/layout/MainLayout.vue";
 </script>
 
-<style  lang="scss">
+<style  lang="scss" >
 @import "../assets/style/style.scss";
 .dashboard {
   margin: 49px 20px;
@@ -246,19 +246,7 @@ label {
   margin-bottom: 5px;
 }
 
-textarea {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  resize: vertical;
-  &::placeholder {
-    color: $purple-text;
 
-    font-size: 10px;
-    font-style: italic;
-    font-weight: 700;
-  }
-}
 .image-slider {
   width: 414px;
   height: 243px;

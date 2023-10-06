@@ -24,4 +24,14 @@ textarea {
   border: 2px solid $purple-text;
   display: flex;
 }
+label {
+    position: absolute;
+    color: #a3a1ff;
+    padding: 9px 16px;
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 2.6px;
+  }
 </style>

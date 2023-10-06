@@ -38,7 +38,19 @@ import CustomTextarea from "@/components/ui/CustomTextarea.vue";
 import CustomButton from "@/components/ui/CustomButton.vue";
 const inputValue = ref("");
 </script>
-<style lang="scss" scoped>
+<style lang="scss" >
 @import '../../assets/style/style.scss';
+textarea#draft {
 
+  border-radius: 5px;
+  padding: 10px;
+  resize: vertical;
+  &::placeholder {
+    color: $purple-text;
+
+    font-size: 10px;
+    font-style: italic;
+    font-weight: 700;
+  }
+}
 </style>
